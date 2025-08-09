@@ -94,6 +94,10 @@ public class Pedido {
         return itemPedido;
     }
 
+    public Set<ItemPedido> getItens() {
+        return itens;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

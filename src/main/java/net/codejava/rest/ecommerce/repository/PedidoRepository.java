@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-    List<Pedido> buscarPorUsarioId(Long usuarioId);
+    List<Pedido> findByUsuario_Id(Long usuarioId);
 }

@@ -28,8 +28,8 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
-    public Usuario inserirUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Usuario inserirUsuario(Usuario novoUsuario) {
+        return usuarioRepository.save(novoUsuario);
     }
 
     public void deletarUsuario(Long id) {
@@ -37,7 +37,7 @@ public class UsuarioService {
     }
 
     public List<Pedido> buscarHistoricoPedidosPorUsuario(Long id) {
-        return pedidoRepository.buscarPorUsarioId(id);
+        return pedidoRepository.findByUsuario_Id(id);
     }
 
     @Transactional

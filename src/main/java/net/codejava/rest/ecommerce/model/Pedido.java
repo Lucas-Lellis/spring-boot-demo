@@ -37,10 +37,6 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ItemPedido> itens = new HashSet<>();
 
-    @OneToMany
-    @JoinColumn(name = "item_pedido_id")
-    private ItemPedido itemPedido;
-
     public Pedido() {
     }
 
@@ -94,10 +90,6 @@ public class Pedido {
         return pagamento;
     }
 
-    public ItemPedido getItemPedido() {
-        return itemPedido;
-    }
-
     public StatusPedido getStatusPedido() {
         return statusPedido;
     }
@@ -118,3 +110,4 @@ public class Pedido {
         return Objects.hashCode(id);
     }
 }
+

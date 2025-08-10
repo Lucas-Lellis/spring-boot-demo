@@ -21,6 +21,6 @@ public class EnderecoService {
     public Optional<Endereco> buscarEnderecoPorId(Long id) {
         return enderecoRepository.findById(id);
     }
-    
-    
+
+
 }

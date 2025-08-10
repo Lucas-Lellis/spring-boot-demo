@@ -1,6 +1,7 @@
 package net.codejava.rest.ecommerce.model;
 
 import jakarta.persistence.*;
+import net.codejava.rest.ecommerce.enums.StatusPedido;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,6 +19,9 @@ public class Pedido {
     private Date data;
     private float frete;
     private float valorTotal;
+
+    @Enumerated(EnumType.STRING)
+    private StatusPedido statusPedido;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
@@ -92,6 +96,10 @@ public class Pedido {
 
     public ItemPedido getItemPedido() {
         return itemPedido;
+    }
+
+    public StatusPedido getStatusPedido() {
+        return statusPedido;
     }
 
     public Set<ItemPedido> getItens() {

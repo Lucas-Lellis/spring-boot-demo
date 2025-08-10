@@ -1,6 +1,7 @@
 package net.codejava.rest.ecommerce.model;
 
 import jakarta.persistence.*;
+import net.codejava.rest.ecommerce.enums.TiposPagamento;
 
 import java.util.Objects;
 
@@ -14,6 +15,9 @@ public class Pagamento {
 
     private float valor;
     private String status;
+
+    @Enumerated(EnumType.STRING)
+    private TiposPagamento tiposPagamento;
 
     @OneToOne
     @JoinColumn(name = "pedido_id")
@@ -53,6 +57,10 @@ public class Pagamento {
 
     public Pedido getPedido() {
         return pedido;
+    }
+
+    public TiposPagamento getTiposPagamento() {
+        return tiposPagamento;
     }
 
     @Override

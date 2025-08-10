@@ -1,5 +1,6 @@
 package net.codejava.rest.ecommerce.service;
 
+import jakarta.transaction.Transactional;
 import net.codejava.rest.ecommerce.model.Pedido;
 import net.codejava.rest.ecommerce.model.Usuario;
 import net.codejava.rest.ecommerce.repository.PedidoRepository;
@@ -37,5 +38,29 @@ public class UsuarioService {
 
     public List<Pedido> buscarHistoricoPedidosPorUsuario(Long id) {
         return pedidoRepository.buscarPorUsarioId(id);
+    }
+
+    @Transactional
+    public Usuario atualizarPerfilUsuario(Long id, Usuario dadosNovos) {
+        Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
+
+        if (usuarioExistente.isPresent()) {
+            Usuario usuario = usuarioExistente.get();
+
+            if (dadosNovos.getNome() != null) {
+                usuario.setNome(dadosNovos.getNome());
+            }
+            if (dadosNovos.getEmail() != null) {
+                usuario.setEmail(dadosNovos.getEmail());
+            }
+            if (dadosNovos.getSenha() != null) {
+                usuario.setSenha(dadosNovos.getSenha());
+            }
+
+            return usuarioRepository.save(usuario);
+        }
+        else {
+            throw new RuntimeException("Usuário não encontrado com o ID: " + id);
+        }
     }
 }

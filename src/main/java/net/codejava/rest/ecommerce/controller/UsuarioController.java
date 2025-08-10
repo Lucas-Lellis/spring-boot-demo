@@ -1,5 +1,6 @@
 package net.codejava.rest.ecommerce.controller;
 
+import net.codejava.rest.ecommerce.model.Pedido;
 import net.codejava.rest.ecommerce.model.Usuario;
 import net.codejava.rest.ecommerce.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,15 @@ public class UsuarioController {
     public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
         usuarioService.deletarUsuario(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{id}/pedidos")
+    public ResponseEntity<List<Pedido>> buscarHistoricoPedidos(@PathVariable Long id) {
+        try {
+            List<Pedido> historicoPedidos = usuarioService.buscarHistoricoPedidosPorUsuario(id);
+            return new ResponseEntity<>(historicoPedidos, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

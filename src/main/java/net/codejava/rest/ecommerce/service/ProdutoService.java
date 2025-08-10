@@ -21,4 +21,12 @@ public class ProdutoService {
     public Optional<Produto> buscarProdutoPorId(Long id) {
         return produtoRepository.findById(id);
     }
+
+    public Produto inserirProduto(Produto novoProduto) {
+        return produtoRepository.save(novoProduto);
+    }
+
+    public void deletarProduto(Long id) {
+        produtoRepository.deleteById(id);
+    }
 }

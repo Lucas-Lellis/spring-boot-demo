@@ -22,5 +22,11 @@ public class EnderecoService {
         return enderecoRepository.findById(id);
     }
 
+    public Endereco inserirEndereco(Endereco novoendereco) {
+        return enderecoRepository.save(novoendereco);
+    }
 
+    public void deletarEndereco(Long id) {
+        enderecoRepository.deleteById(id);
+    }
 }

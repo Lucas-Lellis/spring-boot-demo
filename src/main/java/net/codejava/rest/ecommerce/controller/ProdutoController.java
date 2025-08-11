@@ -37,6 +37,17 @@ public class ProdutoController {
         return new ResponseEntity<>(produtoInserido, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id, @RequestBody Produto dadosNovos) {
+        try {
+            Produto produtoAtualizado = produtoService.atualizarProduto(id, dadosNovos);
+            return new ResponseEntity<>(produtoAtualizado, HttpStatus.OK);
+        }
+        catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarProduto(@PathVariable Long id) {
         produtoService.deletarProduto(id);

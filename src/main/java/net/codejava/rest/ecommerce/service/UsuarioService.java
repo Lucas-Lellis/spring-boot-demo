@@ -3,6 +3,7 @@ package net.codejava.rest.ecommerce.service;
 import jakarta.transaction.Transactional;
 import net.codejava.rest.ecommerce.model.Pedido;
 import net.codejava.rest.ecommerce.model.Usuario;
+import net.codejava.rest.ecommerce.model.Endereco;
 import net.codejava.rest.ecommerce.repository.PedidoRepository;
 import net.codejava.rest.ecommerce.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @Autowired
     private PedidoRepository pedidoRepository;

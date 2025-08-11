@@ -2,6 +2,7 @@ package net.codejava.rest.ecommerce.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,17 +15,14 @@ public class Produto {
 
     private String nome;
     private String descricao;
-    private float preco;
-    private int estoque;
+    private Float preco;
+    private Integer estoque;
     private String imageUrl;
-
-    @OneToMany (mappedBy = "produto")
-    private ItemPedido itemPedido;
 
     public Produto() {
     }
 
-    public Produto(String nome, String descricao, float preco, int estoque, String imageUrl) {
+    public Produto(String nome, String descricao, Float preco, Integer estoque, String imageUrl) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
@@ -56,19 +54,19 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public float getPreco() {
+    public Float getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(Float preco) {
         this.preco = preco;
     }
 
-    public int getEstoque() {
+    public Integer getEstoque() {
         return estoque;
     }
 
-    public void setEstoque(int estoque) {
+    public void setEstoque(Integer estoque) {
         this.estoque = estoque;
     }
 
@@ -78,10 +76,6 @@ public class Produto {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public ItemPedido getItemPedido() {
-        return itemPedido;
     }
 
     @Override
